@@ -1,2 +1,2 @@
-# Student-Academic-Performance-Analysis
-This project aims to show where students are falling behind and how preparation courses affect student performance. We want to understand patterns in how students do in school and what affects student performance.
+# US-Police-Shootings-from-2015-2022
+In a transparent society, accountability in safety and law enforcement is crucial. The public deserves insight into police shootings so lawmakers, researchers, and citizens can discuss these incidents within a framework of justice and equity. Using visual data from police reports, we can encapsulate and simplify the raw data from the reports. We wish to go beyond the surface of media reports. We wish to know the details of the police shootings and the impact they have on people.
