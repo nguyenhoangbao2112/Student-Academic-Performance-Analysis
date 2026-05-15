@@ -104,7 +104,7 @@ Your browser will automatically open at `http://127.0.0.1:5500` and display the 
 
 ## 👥 Contributors
 
-- [@nguyenhoangbao2112](https://github.com/nguyenhoangbao2112) and team
+- [@nguyenhoangbao2112](https://github.com/nguyenhoangbao2112)
 
 ---
 
