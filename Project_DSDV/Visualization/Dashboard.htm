@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US Police Shootings Analysis Dashboard (2015–2022)</title>
+    <script src="d3.v7.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+    <link rel="stylesheet" href="Dashboard.css">
+  </head>
+  <body>
+    <div class="dashboard-container">
+
+      <h1>US Police Shootings &mdash; 2015–2022</h1>
+      <h3 id="dashboard-title">National Statistics All Years</h3>
+
+      <div class="controls">
+        <span>Year</span>
+        <input type="range" id="year-slider">
+        <span><b id="year-display">All</b></span>
+      </div>
+
+      <div id="info-panel" class="info-grid"></div>
+
+      <div class="main-layout">
+
+        <div id="map-panel"></div>
+
+        <div class="stats-panel">
+
+          <div class="chart-nav">
+            <button class="chart-nav-btn active" data-chart="states">TOP STATES</button>
+            <button class="chart-nav-btn" data-chart="race">RACE</button>
+            <button class="chart-nav-btn" data-chart="threat">THREAT</button>
+            <button class="chart-nav-btn" data-chart="age">AGE-RACE</button>
+            <button class="chart-nav-btn" data-chart="mental">MENTAL-FLEE</button>
+          </div>
+
+          <div class="chart-container chart-single">
+            <h3 id="chart-active-title">Top 5 States by Cases</h3>
+            <div id="chart-active-panel"></div>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+
+    <script src="Dashboard.js"></script>
+  </body>
+</html>

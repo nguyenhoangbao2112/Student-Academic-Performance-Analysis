@@ -1,0 +1,346 @@
+/* ─── Design Tokens ─────────────────────────────────────────── */
+:root {
+/* Paper and Ink Palette */
+    --bg-color:      #e8e4e1; 
+    --surface-1:     #fcfcfc; 
+    --surface-2:     #f5f5f5; 
+    --surface-3:     #ffffff;
+    --border:        #222222; 
+    --border-light:  #a0a0a0;
+
+    --text-main:     #1a1a1a; 
+    --text-sub:      #444444;
+    --text-dim:      #666666;
+
+    --accent:        #b22222; 
+    --accent-dim:    rgba(178, 34, 34, 0.08);
+    --accent-glow:   rgba(0, 0, 0, 0.1);
+
+    --radius-sm:     0px; 
+    --radius-md:     2px;
+    --radius-lg:     4px;
+
+    --font-display:  'Courier New', Courier, monospace;
+    --font-mono:     'Courier New', Courier, monospace;
+}
+
+/* ─── Reset & Base ───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-color);
+    background-image: 
+        linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px),
+        linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px);
+    background-size: 20px 20px;
+    color: var(--text-main);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    margin: 0;
+    padding: 20px 24px;
+    min-height: 100vh;
+}
+
+/* ─── Dashboard Shell ────────────────────────────────────────── */
+.dashboard-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    height: calc(100vh - 40px);
+    overflow: hidden;
+}
+
+/* ─── Header ─────────────────────────────────────────────────── */
+.dashboard-container > h1 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: var(--text-main);
+    margin: 0;
+    padding: 10px 0;
+    border-bottom: 3px double var(--border);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.dashboard-container > h1::before {
+    content: 'CLASSIFIED';
+    font-size: 0.6rem;
+    padding: 2px 6px;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    transform: rotate(-5deg);
+    border-radius: 2px;
+    box-shadow: none;
+}
+
+#dashboard-title {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-main);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 5px 0;
+    padding: 4px 0;
+    background: transparent;
+    border: none;
+    display: block;
+    width: fit-content;
+}
+
+#dashboard-title::before {
+    content: "FILE REF: ";
+    color: var(--text-dim);
+}
+
+/* ─── Controls ───────────────────────────────────────────────── */
+.controls {
+    background: var(--surface-2);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 2px 2px 0px var(--border);
+}
+
+.controls label,
+.controls span {
+    font-weight: bold;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--text-main);
+}
+
+#year-display {
+    background: #ffffcc; 
+    padding: 2px 8px;
+    border: 1px solid #d4d4aa;
+    color: #000;
+}
+
+#year-slider {
+    flex-grow: 1;
+    height: 2px;
+    background: var(--border);
+}
+
+#year-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 24px;
+    background: var(--police-blue);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    border-radius: 0;
+}
+
+/* ─── Info Cards ─────────────────────────────────────────────── */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.info-card {
+    background: var(--surface-1);
+    border: 1px solid var(--border-light);
+    border-bottom: 3px solid var(--border);
+    padding: 14px 18px;
+    transition: transform 0.1s;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.info-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--border);
+}
+
+.info-card::before {
+    display: none;
+}
+
+.info-label {
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-decoration: underline;
+    color: var(--text-sub);
+    margin-bottom: 8px;
+}
+
+.info-value {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--police-blue);
+}
+
+/* ─── Main Layout ────────────────────────────────────────────── */
+.main-layout {
+    display: flex;
+    gap: 14px;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* ─── Map Panel ──────────────────────────────────────────────── */
+#map-panel {
+    flex: 2;
+    background: var(--surface-1);
+    border: 2px solid var(--border);
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.05);
+}
+
+/* ─── Stats Panel ────────────────────────────────────────────── */
+.stats-panel {
+    flex: 1.25;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: hidden;
+}
+
+/* ─── Chart Nav Buttons ──────────────────────────────────────── */
+.chart-nav {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.chart-nav-btn {
+    flex: 1;
+    padding: 6px 4px;
+    background: var(--surface-2);
+    border: 2px solid var(--border-light);
+    border-bottom: 3px solid var(--border);
+    color: var(--text-sub);
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 900;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.1s, color 0.1s, border-color 0.1s;
+    box-shadow: 1px 1px 0px rgba(0,0,0,0.08);
+}
+
+.chart-nav-btn:hover {
+    background: var(--surface-3);
+    color: var(--text-main);
+    border-color: var(--border);
+}
+
+.chart-nav-btn.active {
+    background: var(--surface-3);
+    color: var(--accent);
+    border-color: var(--accent);
+    border-bottom-color: var(--accent);
+    box-shadow: 2px 2px 0px var(--accent-dim);
+}
+
+/* ─── Single Chart Container ─────────────────────────────────── */
+.chart-single {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.chart-single h3 {
+    flex-shrink: 0;
+}
+
+#chart-active-panel {
+    flex: 1;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+#chart-active-panel svg {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* ─── Chart Cards ────────────────────────────────────────────── */
+.chart-container {
+    background: var(--surface-1);
+    border: 1px solid var(--border-light);
+    position: relative;
+    border-bottom: 3px solid var(--border);
+    padding: 14px 18px;
+    transition: transform 0.1s;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.chart-container h3 {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 900;
+    color: var(--text-main);
+    margin: 0 0 15px 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--border);
+    text-transform: uppercase;
+}
+
+/* ─── D3 Axes ────────────────────────────────────────────────── */
+.tick text {
+    fill: var(--text-main);
+    font-weight: bold;
+}
+
+.domain, .tick line {
+    stroke: var(--text-main);
+    stroke-width: 1.5px;
+}
+
+/* ─── Map State Paths ────────────────────────────────────────── */
+path {
+    transition: opacity 0.2s, stroke 0.2s, stroke-width 0.2s;
+}
+
+.line-path {
+    fill: none;
+    stroke-width: 2.5;
+    transition: d 0.3s ease;
+}
+
+.dot {
+    stroke: #fff;
+    stroke-width: 1.5;
+}
+
+/* ─── Tooltip ────────────────────────────────────────────────── */
+#tooltip {
+    position: fixed;
+    padding: 10px 10px;
+    background: var(--surface-3);
+    color: var(--text-main);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    pointer-events: none;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.6;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    max-width: 200px;
+}
+
+#tooltip strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    color: var(--accent);
+    margin-bottom: 3px;
+}
